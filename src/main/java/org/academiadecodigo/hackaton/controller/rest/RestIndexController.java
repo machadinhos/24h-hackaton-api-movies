@@ -1,4 +1,4 @@
-package org.academiadecodigo.hackaton.controller.rest.javabank;
+package org.academiadecodigo.hackaton.controller.rest;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
