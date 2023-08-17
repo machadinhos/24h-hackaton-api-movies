@@ -1,10 +1,18 @@
 package org.academiadecodigo.hackaton.controller.rest;
 
+import org.academiadecodigo.hackaton.command.MovieDto;
+import org.academiadecodigo.hackaton.command.SessionDto;
+import org.academiadecodigo.hackaton.converters.MovieToMovieDto;
+import org.academiadecodigo.hackaton.converters.SessionToSessionDto;
+import org.academiadecodigo.hackaton.persistence.model.Movie;
 import org.academiadecodigo.hackaton.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -12,12 +20,63 @@ import org.springframework.web.bind.annotation.RestController;
 public class RestMovieController {
 
     private MovieService movieService;
+    private MovieToMovieDto movieToMovieDto;
+    private SessionToSessionDto sessionToSessionDto;
 
 
     @Autowired
     public void setMovieService (MovieService movieService) {
 
         this.movieService = movieService;
+    }
+
+
+    @Autowired
+    public void setMovieToMovieDto (MovieToMovieDto movieToMovieDto) {
+
+        this.movieToMovieDto = movieToMovieDto;
+    }
+
+
+    @Autowired
+    public void setSessionToSessionDto (SessionToSessionDto sessionToSessionDto) {
+
+        this.sessionToSessionDto = sessionToSessionDto;
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET, path = {"/", "", "/list"})
+    public ResponseEntity<List<MovieDto>> listMovies () {
+
+        List<MovieDto> movieDtos = movieService.getAll().stream()
+                .map(movie -> movieToMovieDto.convert(movie))
+                .collect(Collectors.toList());
+
+        return new ResponseEntity<>(movieDtos, HttpStatus.OK);
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    public ResponseEntity<MovieDto> showMovie (@PathVariable Integer id) {
+
+        Movie movie = movieService.get(id);
+
+        if (movie == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(movieToMovieDto.convert(movie), HttpStatus.OK);
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}/sessions")
+    public ResponseEntity<List<SessionDto>> listMovieSessions (@PathVariable Integer id) {
+
+        List<SessionDto> sessionDtos = movieService.getSessions(id).stream()
+                .map(session -> sessionToSessionDto.convert(session))
+                .collect(Collectors.toList());
+
+        return new ResponseEntity<>(sessionDtos, HttpStatus.OK);
     }
 
 }
