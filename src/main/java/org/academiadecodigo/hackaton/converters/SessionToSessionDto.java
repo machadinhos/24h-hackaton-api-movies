@@ -2,7 +2,9 @@ package org.academiadecodigo.hackaton.converters;
 
 import org.academiadecodigo.hackaton.command.SessionDto;
 import org.academiadecodigo.hackaton.persistence.model.Session;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SessionToSessionDto extends AbstractConverter<Session, SessionDto> {
 
     @Override
