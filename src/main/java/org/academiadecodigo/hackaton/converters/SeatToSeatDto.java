@@ -1,7 +1,6 @@
 package org.academiadecodigo.hackaton.converters;
 
 import org.academiadecodigo.hackaton.command.SeatDto;
-import org.academiadecodigo.hackaton.converters.javabank.AbstractConverter;
 import org.academiadecodigo.hackaton.persistence.model.Seat;
 import org.springframework.stereotype.Component;
 

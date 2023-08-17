@@ -1,7 +1,6 @@
 package org.academiadecodigo.hackaton.converters;
 
 import org.academiadecodigo.hackaton.command.SessionDto;
-import org.academiadecodigo.hackaton.converters.javabank.AbstractConverter;
 import org.academiadecodigo.hackaton.persistence.model.Session;
 
 public class SessionToSessionDto extends AbstractConverter<Session, SessionDto> {
