@@ -1,7 +1,6 @@
 package org.academiadecodigo.hackaton.persistence.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "seat")
@@ -9,6 +8,11 @@ public class Seat extends AbstractModel {
 
     private boolean isAvailable;
     private int seatNumber;
+    @ManyToOne(
+            cascade = {CascadeType.ALL},
+            fetch = FetchType.EAGER
+    )
+    private Session session;
 
 
     public boolean isAvailable () {
@@ -32,6 +36,18 @@ public class Seat extends AbstractModel {
     public void setSeatNumber (int seatNumber) {
 
         this.seatNumber = seatNumber;
+    }
+
+
+    public Session getSession () {
+
+        return session;
+    }
+
+
+    public void setSession (Session session) {
+
+        this.session = session;
     }
 
 }
