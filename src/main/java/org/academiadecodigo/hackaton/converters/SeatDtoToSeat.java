@@ -23,6 +23,7 @@ public class SeatDtoToSeat {
 
         Seat seat = (seatDto.getId() != null ? seatService.get(seatDto.getId()) : new Seat());
 
+        seat.setId(seatDto.getId());
         seat.setAvailable(seatDto.isAvailable());
         seat.setSeatNumber(seatDto.getSeatNumber());
 

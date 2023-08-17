@@ -15,7 +15,6 @@ public class MovieDto {
     private String director;
     private String actors;
     private int duration;
-    private List<Session> sessions;
 
 
     public Integer getId () {
@@ -99,18 +98,6 @@ public class MovieDto {
     public void setDuration (int duration) {
 
         this.duration = duration;
-    }
-
-
-    public List<Session> getSessions () {
-
-        return sessions;
-    }
-
-
-    public void setSessions (List<Session> sessions) {
-
-        this.sessions = sessions;
     }
 
 }

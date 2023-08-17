@@ -2,6 +2,7 @@ package org.academiadecodigo.hackaton.converters;
 
 import org.academiadecodigo.hackaton.command.SessionDto;
 import org.academiadecodigo.hackaton.persistence.model.Session;
+import org.academiadecodigo.hackaton.services.RoomService;
 import org.academiadecodigo.hackaton.services.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,6 +12,7 @@ public class SessionDtoToSession {
 
 
     private SessionService sessionService;
+    private RoomService roomService;
 
 
     @Autowired
@@ -20,13 +22,19 @@ public class SessionDtoToSession {
     }
 
 
+    @Autowired
+    public void setRoomService (RoomService roomService) {
+
+        this.roomService = roomService;
+    }
+
+
     public Session convert (SessionDto sessionDto) {
 
         Session session = (sessionDto.getId() != null ? sessionService.get(sessionDto.getId()) : new Session());
 
-        session.setRoom(sessionDto.getRoom());
-        session.setSeats(sessionDto.getSeats());
-        session.setMovie(sessionDto.getMovie());
+        session.setId(sessionDto.getId());
+        session.setRoom(roomService.get(sessionDto.getRoomNumber()));
         session.setAvailable(session.isAvailable());
         session.setMinute(sessionDto.getMinute());
         session.setHour(sessionDto.getHour());

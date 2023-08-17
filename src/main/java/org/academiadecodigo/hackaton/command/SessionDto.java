@@ -1,19 +1,13 @@
 package org.academiadecodigo.hackaton.command;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import org.academiadecodigo.hackaton.persistence.model.Movie;
 import org.academiadecodigo.hackaton.persistence.model.Room;
-import org.academiadecodigo.hackaton.persistence.model.Seat;
-
-import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class SessionDto {
 
     private Integer id;
-    private Room room;
-    private List<Seat> seats;
-    private Movie movie;
+    private int roomNumber;
     private boolean isAvailable;
     private int minute;
     private int hour;
@@ -34,39 +28,15 @@ public class SessionDto {
     }
 
 
-    public Room getRoom () {
+    public int getRoomNumber () {
 
-        return room;
+        return roomNumber;
     }
 
 
-    public void setRoom (Room room) {
+    public void setRoomNumber (int roomNumber) {
 
-        this.room = room;
-    }
-
-
-    public List<Seat> getSeats () {
-
-        return seats;
-    }
-
-
-    public void setSeats (List<Seat> seats) {
-
-        this.seats = seats;
-    }
-
-
-    public Movie getMovie () {
-
-        return movie;
-    }
-
-
-    public void setMovie (Movie movie) {
-
-        this.movie = movie;
+        this.roomNumber = roomNumber;
     }
 
 

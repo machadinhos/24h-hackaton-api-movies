@@ -13,9 +13,7 @@ public class SessionToSessionDto extends AbstractConverter<Session, SessionDto> 
         SessionDto sessionDto = new SessionDto();
 
         sessionDto.setId(session.getId());
-        sessionDto.setRoom(session.getRoom());
-        sessionDto.setSeats(session.getSeats());
-        sessionDto.setMovie(session.getMovie());
+        sessionDto.setRoomNumber(session.getRoom().getId());
         sessionDto.setAvailable(session.isAvailable());
         sessionDto.setMinute(session.getMinute());
         sessionDto.setHour(session.getHour());

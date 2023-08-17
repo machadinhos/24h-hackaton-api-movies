@@ -48,9 +48,7 @@ public class RestMovieController {
     @RequestMapping(method = RequestMethod.GET, path = {"/", "", "/list"})
     public ResponseEntity<List<MovieDto>> listMovies () {
 
-        List<MovieDto> movieDtos = movieService.getAll().stream()
-                .map(movie -> movieToMovieDto.convert(movie))
-                .collect(Collectors.toList());
+        List<MovieDto> movieDtos = movieToMovieDto.convert(movieService.getAll());
 
         return new ResponseEntity<>(movieDtos, HttpStatus.OK);
     }
@@ -72,8 +70,14 @@ public class RestMovieController {
     @RequestMapping(method = RequestMethod.GET, path = "/{id}/sessions")
     public ResponseEntity<List<SessionDto>> listMovieSessions (@PathVariable Integer id) {
 
-        List<SessionDto> sessionDtos = movieService.getSessions(id).stream()
-                .map(session -> sessionToSessionDto.convert(session))
+        Movie movie = movieService.get(id);
+
+        if (movie == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        List<SessionDto> sessionDtos = movie.getSessions().stream()
+                .map(sessionToSessionDto :: convert)
                 .collect(Collectors.toList());
 
         return new ResponseEntity<>(sessionDtos, HttpStatus.OK);

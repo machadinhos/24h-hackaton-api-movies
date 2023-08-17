@@ -23,6 +23,7 @@ public class MovieDtoToMovie {
 
         Movie movie = (movieDto.getId() != null ? movieService.get(movieDto.getId()) : new Movie());
 
+        movie.setId(movieDto.getId());
         movie.setTitle(movieDto.getTitle());
         movie.setDescription(movieDto.getDescription());
         movie.setGenre(movieDto.getGenre());

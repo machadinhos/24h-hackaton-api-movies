@@ -11,6 +11,7 @@ public class MovieToMovieDto extends AbstractConverter<Movie, MovieDto> {
     public MovieDto convert (Movie movie) {
 
         MovieDto movieDto = new MovieDto();
+
         movieDto.setId(movie.getId());
         movieDto.setTitle(movie.getTitle());
         movieDto.setDescription(movie.getDescription());
@@ -18,7 +19,6 @@ public class MovieToMovieDto extends AbstractConverter<Movie, MovieDto> {
         movieDto.setDirector(movie.getDirector());
         movieDto.setActors(movie.getActors());
         movieDto.setDuration(movie.getDuration());
-        movieDto.setSessions(movie.getSessions());
 
         return movieDto;
     }

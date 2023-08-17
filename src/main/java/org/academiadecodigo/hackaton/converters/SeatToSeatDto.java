@@ -11,6 +11,7 @@ public class SeatToSeatDto extends AbstractConverter<Seat, SeatDto> {
     public SeatDto convert (Seat seat) {
 
         SeatDto seatDto = new SeatDto();
+
         seatDto.setId(seat.getId());
         seatDto.setAvailable(seat.isAvailable());
         seatDto.setSeatNumber(seat.getSeatNumber());
