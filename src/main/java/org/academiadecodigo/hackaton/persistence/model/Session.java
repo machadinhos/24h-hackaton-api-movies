@@ -7,10 +7,14 @@ import java.util.List;
 @Table(name = "session")
 public class Session extends AbstractModel {
 
-    @ManyToOne(
-            cascade = {CascadeType.ALL},
-            fetch = FetchType.EAGER
-    )
+    private boolean isAvailable;
+    private int minute;
+    private int hour;
+    private int day;
+    private int month;
+    private int year;
+
+    @ManyToOne
     private Room room;
     @OneToMany(
             cascade = {CascadeType.ALL},
@@ -19,53 +23,8 @@ public class Session extends AbstractModel {
             fetch = FetchType.EAGER
     )
     private List<Seat> seats;
-    @ManyToOne(
-            cascade = {CascadeType.ALL},
-            fetch = FetchType.EAGER
-    )
+    @ManyToOne
     private Movie movie;
-    private boolean isAvailable;
-    private int minute;
-    private int hour;
-    private int day;
-    private int month;
-    private int year;
-
-
-    public Room getRoom () {
-
-        return room;
-    }
-
-
-    public void setRoom (Room room) {
-
-        this.room = room;
-    }
-
-
-    public List<Seat> getSeats () {
-
-        return seats;
-    }
-
-
-    public void setSeats (List<Seat> seats) {
-
-        this.seats = seats;
-    }
-
-
-    public Movie getMovie () {
-
-        return movie;
-    }
-
-
-    public void setMovie (Movie movie) {
-
-        this.movie = movie;
-    }
 
 
     public boolean isAvailable () {
@@ -137,6 +96,42 @@ public class Session extends AbstractModel {
     public void setYear (int year) {
 
         this.year = year;
+    }
+
+
+    public Room getRoom () {
+
+        return room;
+    }
+
+
+    public void setRoom (Room room) {
+
+        this.room = room;
+    }
+
+
+    public List<Seat> getSeats () {
+
+        return seats;
+    }
+
+
+    public void setSeats (List<Seat> seats) {
+
+        this.seats = seats;
+    }
+
+
+    public Movie getMovie () {
+
+        return movie;
+    }
+
+
+    public void setMovie (Movie movie) {
+
+        this.movie = movie;
     }
 
 }

@@ -6,13 +6,13 @@ import org.academiadecodigo.hackaton.converters.MovieToMovieDto;
 import org.academiadecodigo.hackaton.converters.SessionToSessionDto;
 import org.academiadecodigo.hackaton.persistence.model.Movie;
 import org.academiadecodigo.hackaton.services.MovieService;
+import org.academiadecodigo.hackaton.services.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 public class RestMovieController {
 
     private MovieService movieService;
+    private SessionService sessionService;
     private MovieToMovieDto movieToMovieDto;
     private SessionToSessionDto sessionToSessionDto;
 
@@ -28,6 +29,13 @@ public class RestMovieController {
     public void setMovieService (MovieService movieService) {
 
         this.movieService = movieService;
+    }
+
+
+    @Autowired
+    public void setSessionService (SessionService sessionService) {
+
+        this.sessionService = sessionService;
     }
 
 
@@ -76,9 +84,7 @@ public class RestMovieController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        List<SessionDto> sessionDtos = movie.getSessions().stream()
-                .map(sessionToSessionDto :: convert)
-                .collect(Collectors.toList());
+        List<SessionDto> sessionDtos = sessionToSessionDto.convert(sessionService.getByMovieId(id));
 
         return new ResponseEntity<>(sessionDtos, HttpStatus.OK);
     }

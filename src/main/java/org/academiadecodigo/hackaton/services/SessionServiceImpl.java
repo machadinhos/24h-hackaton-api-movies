@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class SessionServiceImpl implements SessionService {
@@ -47,6 +48,17 @@ public class SessionServiceImpl implements SessionService {
     public List<Seat> getSeats (Integer id) {
 
         return sessionDao.findById(id).getSeats();
+    }
+
+
+    @Override
+    public List<Session> getByMovieId (Integer id) {
+
+        List<Session> sessions = sessionDao.findAll();
+
+        sessions.removeIf(session -> !Objects.equals(session.getMovie().getId(), id));
+
+        return sessions;
     }
 
 }

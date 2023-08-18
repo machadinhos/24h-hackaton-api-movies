@@ -1,10 +1,6 @@
 package org.academiadecodigo.hackaton.persistence.model;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import javax.persistence.*;
-import java.util.Date;
 
 
 @MappedSuperclass
@@ -16,12 +12,6 @@ public abstract class AbstractModel implements Model {
 
     @Version
     private Integer version;
-
-    @CreationTimestamp
-    private Date creationTime;
-
-    @UpdateTimestamp
-    private Date updateTime;
 
 
     @Override
@@ -47,30 +37,6 @@ public abstract class AbstractModel implements Model {
     public void setVersion (Integer version) {
 
         this.version = version;
-    }
-
-
-    public Date getCreationTime () {
-
-        return creationTime;
-    }
-
-
-    public void setCreationTime (Date creationTime) {
-
-        this.creationTime = creationTime;
-    }
-
-
-    public Date getUpdateTime () {
-
-        return updateTime;
-    }
-
-
-    public void setUpdateTime (Date updateTime) {
-
-        this.updateTime = updateTime;
     }
 
 }

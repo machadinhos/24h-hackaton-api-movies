@@ -13,6 +13,7 @@ public class Movie extends AbstractModel {
     private String director;
     private String actors;
     private int duration;
+
     @OneToMany(
             cascade = {CascadeType.ALL},
             orphanRemoval = true,

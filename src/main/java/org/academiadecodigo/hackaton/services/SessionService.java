@@ -13,4 +13,6 @@ public interface SessionService {
 
     List<Seat> getSeats (Integer id);
 
+    List<Session> getByMovieId (Integer id);
+
 }

@@ -33,7 +33,7 @@ public class SeatServiceImpl implements SeatService {
 
         Seat seat = seatDao.findById(id);
 
-        seat.setAvailable(true);
+        seat.setAvailable(false);
 
         seatDao.saveOrUpdate(seat);
     }
