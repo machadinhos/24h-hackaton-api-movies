@@ -4,6 +4,11 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/home/home.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/home" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/movie/4.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/movie" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/movie/6.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/movie" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/movie/7.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/movie" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/movie/8.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/movie" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/movie/9.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/movie" />
       </map>
     </option>
   </component>

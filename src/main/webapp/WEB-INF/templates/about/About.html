@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>LE GAMAAR</title>
-    <link rel="icon" href="../resources/knifeIco.png" type="image/x-icon"/>
+    <link rel="icon" href="../resources/avahi.png" type="image/x-icon"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#home").click(function () {
+                window.location.href = "http://192.168.1.123:8080/hackaton/home";
+            });
+        });
+    </script>
     <style>
         @import url("https://fonts.googleapis.com/css?family=Noto+Sans&display=swap");
 
@@ -121,35 +128,24 @@
             border-radius: 5px;
         }
 
+        #about-text {
+            text-align: center;
+            background-color: rgba(37, 37, 37, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .text {
+            font-size: 20px;
+            color: white;
+        }
     </style>
-
-    <script>
-
-        $(document).ready(function () {
-            $("#Xoxota").click(function () {
-                window.open("https://www.youtube.com/watch?v=bM5mTEavepU", "_blank");
-            });
-
-            $(".card").click(function () {
-                window.location.href = "http://192.168.1.123:8080/hackaton/movie/" + $(this).attr("id");
-            });
-
-            $("#home").click(function () {
-                window.location.href = "http://192.168.1.123:8080/hackaton/home";
-            });
-
-            $("#about").click(function () {
-                window.location.href = "http://192.168.1.123:8080/hackaton/about";
-            });
-        });
-
-    </script>
 </head>
 <body>
 
 <div class="container">
-
-    <img id="Xoxota" src="https://cdn.discordapp.com/attachments/1142010616933011488/1142011189040250992/Shosanna.png" alt="Shosanna"/>
 
     <nav class="navbar">
         <a id="home" href="#">Home</a>
@@ -158,37 +154,22 @@
         <a id="about" href="#">About Cinema</a>
 
     </nav>
-    <br/><br/>
+    <br>
 
     <section class="movie-grid">
-        <div id="1" class="card">
-            <img class="card" src="https://cdn.discordapp.com/attachments/1142010616933011488/1142010998040047656/1-animeHit.png" alt="Image 1"/>
-        </div>
-        <div id="2" class="card">
-            <img src="https://cdn.discordapp.com/attachments/1142010616933011488/1142011017363198032/2-avahi.png" alt="Image 2"/>
-        </div>
-        <div id="3" class="card">
-            <img src="https://cdn.discordapp.com/attachments/1142010616933011488/1142011051144130672/3-NaziBarbie.png" alt="Image 3"/>
-        </div>
-        <div id="4" class="card">
-            <img src="https://cdn.discordapp.com/attachments/1142010616933011488/1142011067506098226/4-hitlerchu.png" alt="Image 4"/>
-        </div>
-        <div id="5" class="card">
-            <img src="https://cdn.discordapp.com/attachments/1142010616933011488/1142011082379104379/5-NaziLiza.png" alt="Image 5"/>
-        </div>
-        <div id="6" class="card">
-            <img src="https://cdn.discordapp.com/attachments/1142010616933011488/1142011097889652746/6-bunny.png" alt="Image 6"/>
-        </div>
-        <div id="7" class="card">
-            <img src="https://cdn.discordapp.com/attachments/1142010616933011488/1142011112297091152/7-foundertrue.png" alt="Image 7"/>
-        </div>
-        <div id="8" class="card">
-            <img src="https://cdn.discordapp.com/attachments/1142010616933011488/1142011130177388574/8-Tyrano.png" alt="Image 8"/>
-        </div>
-        <div id="9" class="card">
-            <img src="https://cdn.discordapp.com/attachments/1142010616933011488/1142011144370929674/9-NaziTatto.png" alt="Image 9"/>
+        <div id="about-text">
+            <p class="text">Our mission is to bring the creativity and humor of programming into the world of fashion. Each product
+                is thoughtfully designed with original phrases that reflect our geek mindset and our unique perspective
+                on the tech universe.</p>
+            <p class="text">We take pride in valuing quality, sustainability, and craftsmanship. All our products are made with
+                high-quality materials and produced locally in Portugal, supporting the local economy.</p>
+            <p class="text">We hope that each products you acquire becomes more than just a piece of clothing but a way to express
+                your love for programming in a fun and stylish manner.</p>
         </div>
     </section>
+    <br/>
+
+
 </div>
 
 <footer class="footer">
